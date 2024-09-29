@@ -1,0 +1,133 @@
+<html> 
+    <head> 
+
+        <script> 
+            window.onload  = function() {
+                const words = Array.from(document.querySelectorAll('ul li')).map(li => li.textContent.trim().toLowerCase());
+                let selectedCells = [];
+ 
+                for (let node of document.querySelectorAll("td")) {
+                    node.onclick = function () {
+                        if (node.className == "") {
+                            node.className = "selected";
+                            selectedCells.push(node);
+                        } else {
+                            node.className = "";
+                            selectedCells = selectedCells.filter(cell => cell !== node);
+                        }
+                        checkWord();
+                    }
+                    if (node.textContent != "") continue;
+                    let charCode = Math.round(65 + Math.random() * 25);
+                    node.textContent = String.fromCharCode(charCode);
+                }
+ 
+                function checkWord() {
+                    if (selectedCells.length < 2) return;
+                    const word = selectedCells.map(cell => cell.textContent).join('').toLowerCase();
+                    const reversedWord = word.split('').reverse().join('');
+                    if (words.includes(word) || words.includes(reversedWord)) {
+                        const index = words.indexOf(word) !== -1 ? words.indexOf(word) : words.indexOf(reversedWord);
+                        document.querySelectorAll('ul li')[index].style.textDecoration = 'line-through';
+                        selectedCells.forEach(cell => cell.className = "found");
+                        selectedCells = [];
+                    }
+                }
+            }
+        </script>
+        <style> 
+            table {
+                border-collapse: collapse;
+                color: #2a4276;
+                background-color: #b3cce3; 
+                width: 100%;
+                margin-bottom: 20px;
+            }
+ 
+            td {
+                cursor: pointer;
+                border: 1px solid black;
+                width: 20px;
+                height: 20px;
+            }
+            td.selected {
+                background: pink; 
+            }
+            body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .table-section, .list-section {
+            flex: 1;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        button {
+            margin: 5px;
+            padding: 5px 10px;
+        }
+        ul {
+            margin-top: 20px;
+            padding-left: 20px;
+            list-style-type: disc;
+            background: #bed1e3;
+            font-family: 'Times New Roman', Times, serif;
+ 
+        } 
+        li::marker {
+                color: #2a4276;
+            }
+        body {
+            background-color: #bed1e3;
+        }
+ 
+        </style>
+    </head>
+    <body>
+        <h1>The Lorem Ipsum Game</h1>
+        <table>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>M</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td>I</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>V</td><td>E</td><td>N</td><td>I</td><td>A</td><td>M</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td>P</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>R</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>A</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td>S</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>O</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>U</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>T</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td>U</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>L</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>Q</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>E</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td>M</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>O</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>I</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>M</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>D</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>L</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>P</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td>T</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>P</td><td>l</td><td>A</td><td>C</td><td>E</td><td>H</td><td>O</td><td>L</td><td>D</td><td>E</td><td>R</td><td></td><td>O</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td>A</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>R</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td>I</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td>G</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>R</td><td>E</td><td>P</td><td>R</td><td>E</td><td>H</td><td>E</td><td>N</td><td>D</td><td>E</td><td>R</td><td>I</td><td>T</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td>U</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td>F</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>E</td><td>I</td><td>U</td><td>S</td><td>M</td><td>O</td><td>D</td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>M</td><td>E</td><td>R</td><td>O</td><td>L</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </table>
+         <ul> 
+            <li> Lorem </li>
+            <li> Ipsum </li>
+            <li> Tempor </li>
+            <Li> Eiusmod </Li>
+            <Li> Placeholder</Li>
+            <li> Dolorem</li>
+            <LI> Aliqua </LI>
+            <Li> Reprehenderit</Li>
+            <LI> Veniam </LI>
+            <li> Fugiat </li></ul>
+            
+    </body>
+</html>
